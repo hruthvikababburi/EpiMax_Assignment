@@ -29,9 +29,10 @@ db.on('disconnected',()=>{
 
 const tasksRouter = require('./routes/task');
 const authRouter = require('./routes/auth');
+const usersRouter = require('./routes/user')
 app.use('/api/tasks', tasksRouter);
 app.use('/api/auth', authRouter);
-
+app.use('/api/users',usersRouter)
 
 
 const PORT = process.env.PORT || 3000

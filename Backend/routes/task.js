@@ -3,6 +3,17 @@ const router = express.Router();
 const Task = require('../models/taskModel');
 const authenticate = require('../middleware/authenticate')
 
+//Get tasks
+router.get('/', authenticate, async (req, res) => {
+    try {
+      const tasks = await Task.find();
+      res.json(tasks);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+});
+
+
 // Create a task
 router.post('/', authenticate, async (req, res) => {
   const { title, description, assignedTo } = req.body;
