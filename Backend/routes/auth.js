@@ -16,7 +16,7 @@ router.post('/login',async(req,res)=>{
         }
     
         // Compare passwords
-        const validPassword = await comparePasswords(password, user.password);
+        const validPassword = await comparePassword(password, user.password);
         if (!validPassword) {
           return res.status(401).json({ message: 'Invalid email or password' });
         }
