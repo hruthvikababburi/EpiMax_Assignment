@@ -27,14 +27,13 @@ db.on('disconnected',()=>{
     console.log('MongoDB Disconnected')
 })
 
+const tasksRouter = require('./routes/task');
+const authRouter = require('./routes/auth');
+app.use('/api/tasks', tasksRouter);
+app.use('/api/auth', authRouter);
+
+
+
 const PORT = process.env.PORT || 3000
-
-app.get('/',(req,res)=>{
-    res.send('HELOO USER')
-})
-
-
 // mongodb+srv://hruthvikababburi:<password>@taskmanager.e9veqsx.mongodb.net/?retryWrites=true&w=majority&appName=TaskManager
-
-
 app.listen(PORT,()=>{console.log(`Running Server at ${PORT}`)})
